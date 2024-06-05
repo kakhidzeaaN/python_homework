@@ -7,27 +7,25 @@
 # Input_ის მეშვეობით მომხმარებლის ინდექსის შეყვანის
 # შემთხვევაში პროგრამამ უნდა დაბრუნოს არჩეულ
 # მომხმარებელზე ინფორმაცია შემდეგნაირად:
-# Name: Elene
-# Lastname: Khardava
-# Age: 21
-# N_list = []
-# S_list = []
-# A_list = []
-# for i in range(0, 3):
-#     name = input("Enter your name: ")
-#     N_list.append(name)
-#     surname = input("Enter your surname: ")
-#     S_list.append(surname)
-#     age = input("Enter your age: ")
-#     A_list.append(age)
-#
-# consumer_info = N_list + S_list + A_list
-#
-# x = int(input("enter the index here: "))
-# if x in range(0, 3):
-#     print(F"Name: {N_list[x]}\nSurname: {S_list[x]}\nAge: {A_list[x]}")
-# else:
-#     print("There is no element with this index here!")
+
+N_list = []
+S_list = []
+A_list = []
+for i in range(0, 3):
+    name = input("Enter your name: ")
+    N_list.append(name)
+    surname = input("Enter your surname: ")
+    S_list.append(surname)
+    age = input("Enter your age: ")
+    A_list.append(age)
+
+consumer_info = N_list + S_list + A_list
+
+x = int(input("enter the index here: "))
+if x in range(0, 3):
+    print(F"Name: {N_list[x]}\nSurname: {S_list[x]}\nAge: {A_list[x]}")
+else:
+    print("There is no element with this index here!")
 
 # 2nd exercise
 # შექმენი ჩაშენებული სია, რომელშიც იქნება შენახული
@@ -36,37 +34,28 @@
 # თუ სიაში მოიძებნა მსახიობი, დაბეჭდe მის შესახებ
 # არსებული ინფორმაცია რეზუმის სახით.
 
-# star_info = ['Jack Nicholson', 'Morgan Freeman', 'Sophie Marceau', 'Brad Pitt']
-# names = []
-# surnames = []
-# for i in range(0, len(star_info)):
-#     names.append(star_info[i].split()[0])
-#     surnames.append(star_info[i].split()[-1])
-#     # print(names)
-#     x = input("Enter star name or surname here: ").lower()
-#     if x in names:
-#         print(x)
-#         # print(names.index(x))
-#     else:
-#         print("No!")
-#
-# print(names)
-# nam = names
-# print(nam)
+star_info = [
+    {"name": "Jack",
+     "surname": "Nicholson",
+     "age": "78"},
+    {"name": "Morgan",
+     "surname": "Freeman",
+     "age": "80"},
+    {"name": "Sophie",
+     "surname": "Marceau",
+     "age": "75"}
+    ]
+name = input("Enter name: ")
+surname = input("Enter surname: ")
+i = 0
+while i < len(star_info):
+    if name == star_info[i]["name"].lower() or surname == star_info[i]["surname"].lower():
+        print(star_info[i])
+    i += 1
 
-# names = ['ann', 'bb', 'dd']
-# x = input("enter name: ").lower()
-# if x in names:
-#     print(names.index(x))
-# else:
-#     print("no!")
-
-
-    # print(F"Your desired actors name is {names[x]} and surname is {surnames[i]}")
-# else:
-#     print("Than person is not in the list!")
-# print(names)
-# print(surnames)
+# კითხვა??
+# print("That person is not in the list!")
+# ეს როგორ დავპრინტო ერთხელ, როცა ინფუთი არაა სიაში
 
 
 # 3rd exercise
@@ -74,10 +63,61 @@
 # დააბრუნებს ასევე სიას, თუმცა უნიკალური
 # ელემენტებით (გამოიყენე set მონაცემთა ტიპი).
 #
-# def unique_list():
+def unique_list(x):
+    list_to_set = set(x)
+    return list_to_set
+
+
+mylist = [9, 7, 7, 6, 6, "a", "a", "Anna", "Name", "name", "name"]
+print(list(unique_list(mylist)))
+
+
+# 4th exercise
+# შექმენი ფუნქცია რომელიც მიიღებს ორ set ტიპის
+# მონაცემს, გააერთიანებს მათ, შემდეგ კი გადააქცევს
+# tuple ტიპის მონაცემად და დააბრუნებს შედეგს.
+# def set_to_tuple():
 # ...
 # return ...
 
-# 4th exercise
+def set_to_tuple(set1, set2):
+    set3 = set1.union(set2)
+    return tuple(set3)
 
-    
+
+set1 = {10, 15, 20}
+set2 = {"green", "yellow"}
+print(set_to_tuple(set1, set2))
+
+# 5th exercise
+# დაწერე პროგრამა, რომელიც შეამოწმებს გადაცემული
+# ლექსიკონი არის თუ არა ცარიელი.
+
+
+def empty_dict(x):
+    if not x:
+        return "Dictionary is empty"
+    else:
+        return "Dictionary contains items"
+
+
+my_dict = {22, 67}
+print(empty_dict(my_dict))
+
+# 6th exercise
+# დაწერე პროგრამა რომელიც სტრიქონისგან ქმნის
+# ლექსიკონს.
+# დათვალე სტრიქონში კონკრეტული სიმბოლოს
+# ოდენობა.
+
+def str_to_dict(x):
+    my_dict = {}
+    for i in x:
+        if i in dict:
+            my_dict[i] += 1
+        else:
+            my_dict[i] = 1
+    return my_dict
+
+
+print(str_to_dict("W3schools"))
